@@ -111,6 +111,17 @@ public class JacobiEigenvalueAlgorithm
             a[k, i] = temp - s * (a[l, i] + tau * temp);
             a[l, i] += s * (temp - tau * a[l, i]);
         }
+        for (int i = 0; i < n; i++)
+        {
+            for(int j = 0; j < n;j++)
+            {
+                if(i == j)
+                {
+                    break;
+                }
+                a[i,j] = a[j,i];
+            }
+        }
 
         // Обновление матрицы преобразования
         for (int i = 0; i < n; i++)
@@ -140,7 +151,15 @@ public class JacobiEigenvalueAlgorithm
                     eigenvalues[i] = a[i, i];
                 return (eigenvalues, p, itNum);
             }
-
+            for (int i = 0; i < n; i++)
+            {
+                for(int j = 0; j < n; j++)
+                {
+                    Console.Write(a[i,j] + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
             Rotate(a, p, n, k, l);
         }
 
